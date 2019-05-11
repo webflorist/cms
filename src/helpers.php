@@ -8,7 +8,7 @@ if (! function_exists('cms')) {
      *
      * @return CmsService
      */
-    function route_tree()
+    function cms()
     {
         return app(CmsService::class);
     }
