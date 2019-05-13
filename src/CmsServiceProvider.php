@@ -5,6 +5,7 @@ namespace Webflorist\Cms;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
+use Webflorist\HtmlFactory\HtmlFactory;
 use Webflorist\RouteTree\RouteTree;
 
 class CmsServiceProvider extends ServiceProvider
@@ -33,9 +34,12 @@ class CmsServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the application services.
+     *
      * @param BladeCompiler $blade
+     * @param HtmlFactory $htmlFactory
+     * @throws \Webflorist\HtmlFactory\Exceptions\DecoratorNotFoundException
      */
-    public function boot(BladeCompiler $blade)
+    public function boot(BladeCompiler $blade, HtmlFactory $htmlFactory)
     {
 
         // Publish the config.
@@ -46,9 +50,21 @@ class CmsServiceProvider extends ServiceProvider
         // Load default translations.
         $this->loadTranslationsFrom(__DIR__ . "/resources/lang","Webflorist-Cms");
 
+        // Load views.
+        $this->loadViewsFrom(__DIR__.'/views', 'cms');
+
+        // Set Blade directives
         $blade->directive('cmscontent', function ($marker='default') {
             return "<?php echo cms()->getPageContent($marker); ?>";
         });
+	
+        // Register included decorators.
+        /*
+        $htmlFactory->decorators->registerFromFolder(
+            'Webflorist\Cms\Decorators\Bootstrap\v4',
+            __DIR__.'/Decorators/Bootstrap/v4'
+        );
+        */
 	
     }
 
