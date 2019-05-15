@@ -28,7 +28,12 @@ abstract class Component extends ContainerElement
         $this->customData($data);
         parent::__construct();
         $this->appendContent($children);
-        $this->view('cms::components.'.$this->getType());
+
+        $viewSuffix = $this->getType();
+        if (isset($data['layout'])) {
+            $viewSuffix .= '.'.$data['layout'];
+        }
+        $this->view('cms::components.'.$viewSuffix);
     }
 
     protected function getType()

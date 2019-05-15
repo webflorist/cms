@@ -3,7 +3,7 @@
 namespace Webflorist\Cms;
 
 use Exception;
-use Webflorist\Cms\Components\Abstracts\Component;
+use Webflorist\Cms\Components\Factory\ComponentFactory;
 use Webflorist\RouteTree\RouteTree;
 
 class CmsService
@@ -16,9 +16,9 @@ class CmsService
     private $routeTree;
 
     /**
-     * @var CmsHtmlFactory
+     * @var ComponentFactory
      */
-    private $htmlFactory;
+    private $componentFactory;
 
 
     /**
@@ -28,9 +28,14 @@ class CmsService
     public function __construct(RouteTree $routeTree)
     {
         $this->routeTree = $routeTree;
-        $this->htmlFactory = new CmsHtmlFactory();
+        $this->componentFactory = new ComponentFactory();
     }
 
+    /**
+     * @param string $marker
+     * @return string
+     * @throws Exception
+     */
     public function getPageContent(string $marker = 'default'): string
     {
         $nodeId = $this->routeTree->getCurrentNode()->getId();
@@ -57,6 +62,16 @@ class CmsService
         }
 
         return implode($pageContent[$marker]);
+    }
+
+    /**
+     * Returns ComponentFactory to create a component.
+     *
+     * @return \Webflorist\Cms\Components\Factory\ComponentFactory
+     */
+    public function createComponent(): ComponentFactory
+    {
+        return $this->componentFactory;
     }
 
 }
