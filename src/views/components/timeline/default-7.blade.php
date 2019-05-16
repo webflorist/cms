@@ -1,5 +1,6 @@
-<div class="main-timeline7">
-    @foreach($el->getData('items') as $item)
+<div class="cms-timeline-default-7">
+    @foreach($el->getPayload('items') as $item)
+
         <div class="timeline">
 
             <div class="timeline-icon">
@@ -11,7 +12,7 @@
             <div class="timeline-content">
 
                 @isset($item['heading'])
-                    {!! cms()->createComponent()->heading($item['heading']) !!}
+                    {!! cms()->createComponent()->heading($item['heading']['tag'])->payload($item['heading']['payload']) !!}
                 @endisset
 
                 @isset($item['text'])
@@ -22,5 +23,6 @@
 
             </div>
         </div>
+
     @endforeach
 </div>

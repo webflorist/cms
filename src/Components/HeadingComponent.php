@@ -3,20 +3,17 @@
 namespace Webflorist\Cms\Components;
 
 use Webflorist\Cms\Components\Abstracts\Component;
-use Webflorist\HtmlFactory\Exceptions\CustomDataNotFoundException;
+use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
 
 class HeadingComponent extends Component
 {
-
     /**
-     * Returns the name of the element.
-     *
-     * @return string
-     * @throws CustomDataNotFoundException
+     * RowComponent constructor.
      */
-    public function getName(): string
+    public function __construct(string $tag='h1')
     {
-        return $this->hasData('tag') ? $this->getData('tag') : 'h1';
+        parent::__construct();
+        $this->overrideName($tag);
     }
 
     protected function setUp()

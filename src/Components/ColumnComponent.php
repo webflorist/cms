@@ -6,15 +6,13 @@ use Webflorist\Cms\Components\Abstracts\Component;
 
 class ColumnComponent extends Component
 {
-
     /**
-     * Returns the name of the element.
-     *
-     * @return string
+     * RowComponent constructor.
      */
-    public function getName(): string
+    public function __construct(string $tag='div')
     {
-        return $this->hasData('tag') ? $this->getData('tag') : 'div';
+        parent::__construct();
+        $this->overrideName($tag);
     }
 
     protected function setUp()
@@ -23,10 +21,6 @@ class ColumnComponent extends Component
 
         // Bootstrap-specific.
         $this->addClass('col');
-
-        if ($this->hasData('col-md')) {
-            $this->addClass('col-md-' . $this->getData('col-md'));
-        }
 
     }
 

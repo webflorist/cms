@@ -4,6 +4,7 @@ namespace Webflorist\Cms\Components\Abstracts;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Webflorist\HtmlFactory\Components\Traits\HasLayout;
 use Webflorist\HtmlFactory\Elements\Abstracts\ContainerElement;
 
 /**
@@ -17,28 +18,25 @@ use Webflorist\HtmlFactory\Elements\Abstracts\ContainerElement;
 abstract class Component extends ContainerElement
 {
 
-    /**
-     * Component constructor.
-     *
-     * @param array $data
-     * @param array $children
-     */
-    public function __construct(array $data, array $children=[])
-    {
-        $this->customData($data);
-        parent::__construct();
-        $this->appendContent($children);
+    use HasLayout;
 
-        $viewSuffix = $this->getType();
-        if (isset($data['layout'])) {
-            $viewSuffix .= '.'.$data['layout'];
-        }
-        $this->view('cms::components.'.$viewSuffix);
+    protected function beforeDecoration()
+    {
+        $this->determineView();
     }
 
-    protected function getType()
+    protected function getComponentName()
     {
         $shortClassName = Arr::last(explode('\\', get_class($this)));
         return Str::kebab(substr($shortClassName, 0, -9));
+    }
+
+    private function determineView()
+    {
+        $viewSuffix = $this->getComponentName();
+        if ($this->hasLayout()) {
+            $viewSuffix .= '.' . $this->getLayout();
+        }
+        $this->view('cms::components.' . $viewSuffix);
     }
 }

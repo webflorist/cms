@@ -1,5 +1,5 @@
 <{{$el->getName()}}{!! $el->attributes->render(true) !!}>
-    @foreach($el->getData('items') as $item)
+    @foreach($el->getPayload('items') as $item)
         <li class="media">
             @isset($item['icon'])
                 <div class="mr-3 icon icon-primary">

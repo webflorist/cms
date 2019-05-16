@@ -1,14 +1,9 @@
-<div class="main-timeline1">
-
+<div class="main-timeline21">
     @foreach($el->getPayload('items') as $item)
 
         <div class="timeline">
 
-            <!--span class="year">{{$item['date']}}</span-->
-
-            <div class="timeline-icon">
-                <i class="{{$item['icon']}}"></i>
-            </div>
+            <span class="timeline-icon"></span>
 
             <div class="timeline-content">
 
@@ -23,8 +18,13 @@
                 @endisset
 
             </div>
+
+            <div class="icon">
+                <i class="{{$item['icon']}}"></i>
+                <span class="year">{{$item['date']}}</span>
+            </div>
+
         </div>
 
     @endforeach
-
 </div>

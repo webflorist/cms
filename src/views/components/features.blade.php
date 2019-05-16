@@ -1,5 +1,5 @@
-@foreach($el->getData('features') as $feature)
-    <div class="{{$el->getData('item-classes')}} text-center">
+@foreach($el->getPayload('items') as $feature)
+    <div class="{{$el->getPayload('item-classes')}} text-center">
         <div class="info">
             @isset($feature['icon'])
                 <div class="icon icon-primary">

@@ -6,15 +6,13 @@ use Webflorist\Cms\Components\Abstracts\Component;
 
 class RowComponent extends Component
 {
-
     /**
-     * Returns the name of the element.
-     *
-     * @return string
+     * RowComponent constructor.
      */
-    public function getName(): string
+    public function __construct(string $tag='div')
     {
-        return $this->hasData('tag') ? $this->getData('tag') : 'section';
+        parent::__construct();
+        $this->overrideName($tag);
     }
 
     protected function setUp()
@@ -23,10 +21,6 @@ class RowComponent extends Component
 
         // Bootstrap-specific.
         $this->addClass('row');
-
-        if ($this->hasData('justify-content')) {
-            $this->addClass('justify-content-'.$this->getData('justify-content'));
-        }
 
     }
 

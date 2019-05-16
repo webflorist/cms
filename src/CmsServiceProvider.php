@@ -47,6 +47,9 @@ class CmsServiceProvider extends ServiceProvider
             __DIR__.'/config/cms.php' => config_path('cms.php'),
         ]);
 
+        // Load migrations.
+        $this->loadMigrationsFrom(__DIR__.'/migrations');
+
         // Load default translations.
         $this->loadTranslationsFrom(__DIR__ . "/resources/lang","Webflorist-Cms");
 

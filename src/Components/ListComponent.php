@@ -6,16 +6,13 @@ use Webflorist\Cms\Components\Abstracts\Component;
 
 class ListComponent extends Component
 {
-
     /**
-     * Returns the name of the element.
-     *
-     * @return string
+     * RowComponent constructor.
      */
-    public function getName(): string
+    public function __construct(string $tag='ul')
     {
-        return $this->hasData('tag') ? $this->getData('tag') : 'ul';
+        parent::__construct();
+        $this->overrideName($tag);
     }
-
 
 }

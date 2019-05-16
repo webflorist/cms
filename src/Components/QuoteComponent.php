@@ -8,14 +8,11 @@ class QuoteComponent extends Component
 {
 
     /**
-     * Returns the name of the element.
+     * The name (=tag) of this element.
      *
-     * @return string
+     * @var string
      */
-    public function getName(): string
-    {
-        return 'blockquote';
-    }
+    protected $name = 'blockquote';
 
     protected function setUp()
     {
