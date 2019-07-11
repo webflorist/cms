@@ -8,7 +8,7 @@ use Webflorist\Cms\Components\ListComponent;
 class ListComponentTest extends TestCase
 {
 
-    public function test_complex_heading_component()
+    public function test_complex_list_component()
     {
 
         $this->assertHtmlEquals(

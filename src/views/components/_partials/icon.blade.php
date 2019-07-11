@@ -1,1 +1,1 @@
-{!! icon_factory($item['icon']) !!}
+{!! icon_factory($icon) !!}

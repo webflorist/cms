@@ -1,9 +1,9 @@
 @foreach($el->getPayload('items') as $feature)
-    <div class="{{$el->getPayload('item-classes')}} text-center">
+    <div class="{{$el->getPayload('item-classes', '')}} text-center">
         <div class="info">
             @isset($feature['icon'])
                 <div class="icon icon-primary">
-                    @include('cms::components._partials.icon')
+                    @include('cms::components._partials.icon', ['icon' => $feature['icon']])
                 </div>
             @endisset
             @isset($feature['title'])
