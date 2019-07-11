@@ -1,0 +1,1 @@
+{!! icon_factory($item['icon']) !!}
