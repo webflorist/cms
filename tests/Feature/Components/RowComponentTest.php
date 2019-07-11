@@ -12,11 +12,6 @@ class RowComponentTest extends TestCase
 
     public function test_complex_row_component()
     {
-        $data = [
-            'tag' => 'section',
-            'justify-content' => 'center'
-        ];
-        $children = ['Favere vix ducunt ad clemens detrius.'];
 
         $this->assertHtmlEquals(
             '
@@ -24,7 +19,9 @@ class RowComponentTest extends TestCase
                     Favere vix ducunt ad clemens detrius.
                 </section>
             ',
-            (new RowComponent($data, $children))
+            (new RowComponent('section'))
+                ->addClass('justify-content-center')
+                ->content('Favere vix ducunt ad clemens detrius.')
         );
     }
 

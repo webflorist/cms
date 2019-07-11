@@ -7,6 +7,8 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
 use Webflorist\Cms\CmsServiceProvider;
 use Webflorist\HtmlFactory\HtmlFactoryFacade;
 use Webflorist\HtmlFactory\HtmlFactoryServiceProvider;
+use Webflorist\IconFactory\IconFactoryFacade;
+use Webflorist\IconFactory\IconFactoryServiceProvider;
 
 /**
  * Class TestCase
@@ -29,6 +31,7 @@ class TestCase extends BaseTestCase
     {
         return [
 	        HtmlFactoryServiceProvider::class,
+            IconFactoryServiceProvider::class,
             CmsServiceProvider::class
         ];
     }
@@ -37,6 +40,7 @@ class TestCase extends BaseTestCase
     {
         return [
             'Html' => HtmlFactoryFacade::class,
+            'Icon' => IconFactoryFacade::class,
         ];
     }
 

@@ -3,7 +3,7 @@
         <li class="media">
             @isset($item['icon'])
                 <div class="mr-3 icon icon-primary">
-                    <i class="fas fa-{{$item['icon']}}"></i>
+                    @include('cms::components._partials.icon')
                 </div>
             @endisset
             <div class="media-body">

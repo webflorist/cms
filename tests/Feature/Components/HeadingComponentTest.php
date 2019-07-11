@@ -10,11 +10,6 @@ class HeadingComponentTest extends TestCase
 
     public function test_complex_heading_component()
     {
-        $data = [
-            'tag' => 'h1',
-            'title' => 'Torquiss cadunt in copinga!',
-            'subtitle' => 'Sunt scutumes pugna rusticus, nobilis historiaes.'
-        ];
 
         $this->assertHtmlEquals(
             '
@@ -23,7 +18,10 @@ class HeadingComponentTest extends TestCase
                     <small class="d-block text-muted">Sunt scutumes pugna rusticus, nobilis historiaes.</small>
                 </h1>
             ',
-            (new HeadingComponent($data))
+            (new HeadingComponent('h1'))->payload([
+                'title' => 'Torquiss cadunt in copinga!',
+                'subtitle' => 'Sunt scutumes pugna rusticus, nobilis historiaes.'
+            ])
         );
     }
 

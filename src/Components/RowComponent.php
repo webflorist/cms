@@ -8,6 +8,7 @@ class RowComponent extends Component
 {
     /**
      * RowComponent constructor.
+     * @param string $tag
      */
     public function __construct(string $tag='div')
     {

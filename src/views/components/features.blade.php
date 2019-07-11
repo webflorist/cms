@@ -3,7 +3,7 @@
         <div class="info">
             @isset($feature['icon'])
                 <div class="icon icon-primary">
-                    <i class="fas fa-{{$feature['icon']}}"></i>
+                    @include('cms::components._partials.icon')
                 </div>
             @endisset
             @isset($feature['title'])

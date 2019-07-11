@@ -9,6 +9,8 @@ class HeadingComponent extends Component
 {
     /**
      * RowComponent constructor.
+     *
+     * @param string $tag
      */
     public function __construct(string $tag='h1')
     {
@@ -19,9 +21,5 @@ class HeadingComponent extends Component
     protected function setUp()
     {
         parent::setUp();
-
-        // Bootstrap-specific.
-        $this->addClass('title');
-
     }
 }

@@ -20,7 +20,7 @@
             </div>
 
             <div class="icon">
-                <i class="{{$item['icon']}}"></i>
+                @include('cms::components._partials.icon')
                 <span class="year">{{$item['date']}}</span>
             </div>
 

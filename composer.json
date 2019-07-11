@@ -9,7 +9,7 @@
     ],
     "require": {
 		"laravel/framework": "~5.5",
-        "webflorist/htmlfactory": "1.1.*"
+        "webflorist/iconfactory": "dev-develop"
     },
     "require-dev": {
         "orchestra/testbench": "~3.5",
@@ -25,6 +25,11 @@
         ]
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/webflorist/iconfactory",
+            "no-api": true
+        },
         {
             "type": "vcs",
             "url": "https://github.com/webflorist/htmlfactory",
