@@ -9,6 +9,7 @@ use Webflorist\HtmlFactory\HtmlFactoryFacade;
 use Webflorist\HtmlFactory\HtmlFactoryServiceProvider;
 use Webflorist\IconFactory\IconFactoryFacade;
 use Webflorist\IconFactory\IconFactoryServiceProvider;
+use Webflorist\RouteTree\RouteTreeServiceProvider;
 
 /**
  * Class TestCase
@@ -32,6 +33,7 @@ class TestCase extends BaseTestCase
         return [
 	        HtmlFactoryServiceProvider::class,
             IconFactoryServiceProvider::class,
+            RouteTreeServiceProvider::class,
             CmsServiceProvider::class
         ];
     }

@@ -18,7 +18,7 @@ use Webflorist\Cms\Exceptions\InvalidAccessorException;
  * Components:
  * ===========
  * @method static ColumnComponent             column(array $data, array $children=[])
- * @method static HeadingComponent            heading(array $data, array $children=[])
+ * @method static HeadingComponent            heading(string $tag='h1')
  *
  */
 class ComponentFactory

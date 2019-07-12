@@ -9,7 +9,8 @@
     ],
     "require": {
 		"laravel/framework": "~5.5",
-        "webflorist/iconfactory": "dev-develop"
+        "webflorist/iconfactory": "dev-develop",
+        "webflorist/routetree": "dev-develop"
     },
     "require-dev": {
         "orchestra/testbench": "~3.5",
@@ -28,6 +29,11 @@
         {
             "type": "vcs",
             "url": "https://github.com/webflorist/iconfactory",
+            "no-api": true
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/webflorist/routetree",
             "no-api": true
         },
         {

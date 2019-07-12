@@ -17,9 +17,4 @@ class HeadingComponent extends Component
         parent::__construct();
         $this->overrideName($tag);
     }
-
-    protected function setUp()
-    {
-        parent::setUp();
-    }
 }
