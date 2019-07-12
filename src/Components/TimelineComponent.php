@@ -19,6 +19,9 @@ class TimelineComponent extends Component
         return $this->hasData('tag') ? $this->getData('tag') : 'div';
     }
 
+    /**
+     * @throws PayloadNotFoundException
+     */
     protected function beforeDecoration()
     {
         parent::beforeDecoration();
@@ -26,7 +29,7 @@ class TimelineComponent extends Component
         // Set default icon.
         foreach ($this->getPayload('items') as $itemKey => $itemData) {
             if (!isset($itemData['icon'])) {
-                $itemData['icon'] = 'fas fa-arrow-alt-circle-down';
+                $itemData['icon'] = 'arrow-alt-circle-down';
                 $this->payload($itemData, "items.$itemKey");
             }
         }
