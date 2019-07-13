@@ -41,7 +41,7 @@ abstract class CmsComponent extends ContainerElement
      */
     protected function beforeDecoration()
     {
-        if ($this->payload->hasPayload('items')) {
+        if ($this->payload->has('items')) {
             $this->processItems();
         }
         $this->determineView();
@@ -71,7 +71,7 @@ abstract class CmsComponent extends ContainerElement
             /** @var CmsComponentPayload $item */
 
             // Add default item-classes to items.
-            if ($this->payload->hasPayload('item-classes')) {
+            if ($this->payload->has('item-classes')) {
                 if (!is_null($item->classes)) {
                     $item->classes .= ' ' . $this->payload->get('item-classes');
                 }
@@ -81,7 +81,7 @@ abstract class CmsComponent extends ContainerElement
             }
 
             // Add default icon to item.
-            if ($this->payload->hasPayload('item-icon') && is_null($item->icon)) {
+            if ($this->payload->has('item-icon') && is_null($item->icon)) {
                 $item->icon = $this->payload->get('item-icon');
             }
         }
