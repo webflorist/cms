@@ -16,9 +16,9 @@
                     {!! cms()->createComponent()->heading($item['heading']) !!}
                 @endisset
 
-                @isset($item['text'])
+                @isset($item['content'])
                     <p class="description">
-                        {{ $item['text'] }}
+                        {{ $item['content'] }}
                     </p>
                 @endisset
 
