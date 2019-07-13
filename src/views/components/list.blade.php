@@ -3,12 +3,12 @@
         <li class="media">
             @isset($item->icon)
                 <div class="mr-3 icon icon-primary">
-                    @include('cms::components._partials.icon', ['icon' => $item->icon])
+                    {!! icon_factory($item->icon) !!}
                 </div>
             @endisset
             <div class="media-body">
-                @isset($item->title)
-                    <h3 class="info-title">{{$item->title}}</h3>
+                @isset($item->heading)
+                    {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClasses(['mt-0', 'mb-1']) !!}
                 @endisset
                 @isset($item->content)
                     <p>

@@ -4,7 +4,7 @@
         <div class="timeline">
 
             <div class="timeline-icon">
-                @include('cms::components._partials.icon', ['icon' => $item->icon])
+                {!! icon_factory($item->icon) !!}
             </div>
 
             <span class="year">{{$item->date}}</span>

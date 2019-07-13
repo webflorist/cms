@@ -3,11 +3,11 @@
         <div class="info">
             @isset($item->icon)
                 <div class="icon icon-primary">
-                    @include('cms::components._partials.icon', ['icon' => $item->icon])
+                    {!! icon_factory($item->icon) !!}
                 </div>
             @endisset
-            @isset($item->title)
-                <h3 class="info-title">{{$item->title}}</h3>
+            @isset($item->heading)
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title') !!}
             @endisset
             @isset($item->content)
                 <p>

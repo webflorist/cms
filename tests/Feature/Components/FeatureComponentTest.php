@@ -39,11 +39,11 @@ class FeatureComponentTest extends TestCase
                         ->items(
                             [
                                 (new CmsComponentPayload)
-                                    ->title('Phone')
+                                    ->heading(new CmsComponentPayload(['tag' => 'h3', 'title' => 'Phone']))
                                     ->icon('phone')
                                     ->content('My Phone Number'),
                                 (new CmsComponentPayload)
-                                    ->title('E-Mail')
+                                    ->heading(new CmsComponentPayload(['tag' => 'h3', 'title' => 'E-Mail']))
                                     ->icon('email')
                                     ->content('My E-Mail Address')
                             ]

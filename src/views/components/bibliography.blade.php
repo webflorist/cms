@@ -3,7 +3,7 @@
         <li class="media">
             @isset($item->icon)
                 <div class="mr-3 icon icon-primary">
-                    @include('cms::components._partials.icon', ['icon' => $item->icon])
+                    {!! icon_factory($item->icon) !!}
                 </div>
             @endisset
             <cite class="media-body">

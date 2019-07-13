@@ -1,1 +1,0 @@
-{!! icon_factory($icon) !!}
