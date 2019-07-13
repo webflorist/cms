@@ -19,17 +19,21 @@ class BibliographyComponentTest extends TestCase
                     <li class="media">
                         <div class="mr-3 icon icon-primary"> <i class="fas fa-bookmark"></i> </div>
                         <cite class="media-body">
-                            Frank Herbert: Dune (1965)
-                            <br/>
-                            <a href="https://en.wikipedia.org/wiki/Dune_(novel)" target="_blank">https://en.wikipedia.org/wiki/Dune_(novel)</a>
+                            <p>
+                                Frank Herbert: Dune (1965)
+                                <br/>
+                                <a href="https://en.wikipedia.org/wiki/Dune_(novel)" target="_blank">https://en.wikipedia.org/wiki/Dune_(novel)</a>                            
+                            </p>
                         </cite>
                     </li>
                     <li class="media">
                         <div class="mr-3 icon icon-primary"> <i class="fas fa-bookmark"></i> </div>
                         <cite class="media-body">
-                            Isaac Asimov: Foundation (1951)
-                            <br/>
-                            <a href="https://en.wikipedia.org/wiki/Foundation_(Asimov_novel)" target="_blank">https://en.wikipedia.org/wiki/Foundation_(Asimov_novel)</a>
+                            <p>
+                                Isaac Asimov: Foundation (1951)
+                                <br/>
+                                <a href="https://en.wikipedia.org/wiki/Foundation_(Asimov_novel)" target="_blank">https://en.wikipedia.org/wiki/Foundation_(Asimov_novel)</a>                            
+                            </p>
                         </cite>
                     </li>
                 </ul>
