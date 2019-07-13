@@ -15,6 +15,14 @@ class CmsComponentPayload extends Payload
     public $items;
 
     /**
+     * Array of default-values
+     * for items.
+     *
+     * @var array
+     */
+    public $itemDefaults;
+
+    /**
      * Title of component.
      *
      * @var string|CmsComponentPayload

@@ -70,19 +70,13 @@ abstract class CmsComponent extends ContainerElement
         foreach ($this->payload->get('items') as $item) {
             /** @var CmsComponentPayload $item */
 
-            // Add default item-classes to items.
-            if ($this->payload->has('item-classes')) {
-                if (!is_null($item->classes)) {
-                    $item->classes .= ' ' . $this->payload->get('item-classes');
+            // Add default item-values to items.
+            if ($this->payload->has('itemDefaults')) {
+                foreach ($this->payload->get('itemDefaults') as $key => $value) {
+                    if (is_null($item->{$key})) {
+                        $item->{$key} = $value;
+                    }
                 }
-                else {
-                    $item->classes = $this->payload->get('item-classes');
-                }
-            }
-
-            // Add default icon to item.
-            if ($this->payload->has('item-icon') && is_null($item->icon)) {
-                $item->icon = $this->payload->get('item-icon');
             }
         }
 

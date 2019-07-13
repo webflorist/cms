@@ -17,6 +17,7 @@ class BibliographyComponentTest extends TestCase
             '
                 <ul >
                     <li class="media">
+                        <div class="mr-3 icon icon-primary"> <i class="fas fa-bookmark"></i> </div>
                         <cite class="media-body">
                             Frank Herbert: Dune (1965)
                             <br/>
@@ -24,6 +25,7 @@ class BibliographyComponentTest extends TestCase
                         </cite>
                     </li>
                     <li class="media">
+                        <div class="mr-3 icon icon-primary"> <i class="fas fa-bookmark"></i> </div>
                         <cite class="media-body">
                             Isaac Asimov: Foundation (1951)
                             <br/>
