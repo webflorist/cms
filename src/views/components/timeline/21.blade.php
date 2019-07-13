@@ -1,5 +1,5 @@
 <div class="main-timeline21">
-    @foreach($el->getPayload('items') as $item)
+    @foreach($el->payload->get('items') as $item)
 
         <div class="timeline">
 

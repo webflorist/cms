@@ -3,7 +3,7 @@
 namespace Webflorist\Cms;
 
 use Exception;
-use Webflorist\Cms\Components\Factory\ComponentFactory;
+use Webflorist\Cms\Components\Factory\CmsComponentFactory;
 use Webflorist\RouteTree\RouteTree;
 
 class CmsService
@@ -16,7 +16,7 @@ class CmsService
     private $routeTree;
 
     /**
-     * @var ComponentFactory
+     * @var CmsComponentFactory
      */
     private $componentFactory;
 
@@ -28,7 +28,7 @@ class CmsService
     public function __construct(RouteTree $routeTree)
     {
         $this->routeTree = $routeTree;
-        $this->componentFactory = new ComponentFactory();
+        $this->componentFactory = new CmsComponentFactory();
     }
 
     /**
@@ -67,9 +67,9 @@ class CmsService
     /**
      * Returns ComponentFactory to create a component.
      *
-     * @return \Webflorist\Cms\Components\Factory\ComponentFactory
+     * @return CmsComponentFactory
      */
-    public function createComponent(): ComponentFactory
+    public function createComponent(): CmsComponentFactory
     {
         return $this->componentFactory;
     }

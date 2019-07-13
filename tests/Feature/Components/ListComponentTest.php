@@ -4,6 +4,7 @@ namespace CmsTests\Feature\Elements;
 
 use CmsTests\TestCase;
 use Webflorist\Cms\Components\ListComponent;
+use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 
 class ListComponentTest extends TestCase
 {
@@ -29,18 +30,18 @@ class ListComponentTest extends TestCase
                 </ul>
             ',
             (new ListComponent())
-                ->payload([
-                    'items' => [
-                        [
-                            'icon' => 'phone',
-                            'text' => 'Phone Icon'
-                        ],
-                        [
-                            'icon' => 'mail',
-                            'text' => 'Mail Icon'
-                        ]
-                    ]
-                ])
+                ->payload(
+                    (new CmsComponentPayload)
+                        ->items(
+                            [
+                                (new CmsComponentPayload)
+                                    ->icon('phone')
+                                    ->content('Phone Icon'),
+                                (new CmsComponentPayload)
+                                    ->icon('mail')
+                                    ->content('Mail Icon')
+                            ]
+                        ))
         );
     }
 

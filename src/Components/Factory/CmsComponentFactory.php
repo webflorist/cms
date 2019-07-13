@@ -2,7 +2,7 @@
 
 namespace Webflorist\Cms\Components\Factory;
 
-use Webflorist\Cms\Components\Abstracts\Component;
+use Webflorist\Cms\Components\Abstracts\CmsComponent;
 use Webflorist\Cms\Components\ColumnComponent;
 use Webflorist\Cms\Components\HeadingComponent;
 use Webflorist\Cms\Exceptions\InvalidAccessorException;
@@ -21,7 +21,7 @@ use Webflorist\Cms\Exceptions\InvalidAccessorException;
  * @method static HeadingComponent            heading(string $tag='h1')
  *
  */
-class ComponentFactory
+class CmsComponentFactory
 {
 
     /**

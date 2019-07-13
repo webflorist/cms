@@ -2,10 +2,10 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\Component;
+use Webflorist\Cms\Components\Abstracts\CmsComponent;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
 
-class TimelineComponent extends Component
+class TimelineComponent extends CmsComponent
 {
 
     /**
@@ -27,10 +27,9 @@ class TimelineComponent extends Component
         parent::beforeDecoration();
 
         // Set default icon.
-        foreach ($this->getPayload('items') as $itemKey => $itemData) {
-            if (!isset($itemData['icon'])) {
-                $itemData['icon'] = 'arrow-alt-circle-down';
-                $this->payload($itemData, "items.$itemKey");
+        foreach ($this->payload->get('items') as $item) {
+            if (is_null($item->icon)) {
+                $item->icon = 'arrow-alt-circle-down';
             }
         }
     }

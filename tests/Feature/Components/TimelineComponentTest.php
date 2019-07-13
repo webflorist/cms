@@ -3,6 +3,8 @@
 namespace CmsTests\Feature\Elements;
 
 use CmsTests\TestCase;
+use Webflorist\Cms\Components\HeadingComponent;
+use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 use Webflorist\Cms\Components\TimelineComponent;
 
 class TimelineComponentTest extends TestCase
@@ -38,30 +40,28 @@ class TimelineComponentTest extends TestCase
             ',
             (new TimelineComponent)
                 ->layout('default-7')
-                ->payload([
-                    'items' => [
-                        [
-                            'date' => '1999',
-                            'heading' => [
-                                'tag' => 'h1',
-                                'payload' => [
-                                    'title' => 'Item 1 Title'
-                                ]
-                            ],
-                            'text' => 'Item 1 Text'
-                        ],
-                        [
-                            'date' => '2003',
-                            'heading' => [
-                                'tag' => 'h1',
-                                'payload' => [
-                                    'title' => 'Item 2 Title'
-                                ]
-                            ],
-                            'text' => 'Item 2 Text'
-                        ]
-                    ]
-                ])
+                ->payload(
+                    (new CmsComponentPayload)
+                        ->items(
+                            [
+                                (new CmsComponentPayload)
+                                    ->date(1999)
+                                    ->heading(new CmsComponentPayload([
+                                        'tag' => 'h1',
+                                        'title' => 'Item 1 Title'
+                                    ]))
+                                    ->content('Item 1 Text'),
+
+                                (new CmsComponentPayload)
+                                    ->date(2003)
+                                    ->heading(new CmsComponentPayload([
+                                        'tag' => 'h1',
+                                        'title' => 'Item 2 Title'
+                                    ]))
+                                    ->content('Item 2 Text')
+                            ]
+                        )
+                )
         );
     }
 

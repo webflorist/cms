@@ -1,6 +1,6 @@
 <{{$el->getName()}}{!! $el->attributes->render(true) !!}>
-    {{ $el->getPayload('title') }}
-    @if($el->hasPayload('subtitle'))
-        <small class="d-block text-muted">{{$el->getPayload('subtitle')}}</small>
+    {{ $el->payload->get('title') }}
+    @if($el->payload->hasPayload('subtitle'))
+        <small class="d-block text-muted">{{$el->payload->get('subtitle')}}</small>
     @endif
 </{{$el->getName()}}>

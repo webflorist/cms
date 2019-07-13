@@ -1,16 +1,18 @@
-@foreach($el->getPayload('items') as $feature)
-    <div class="{{$el->getPayload('item-classes', '')}} text-center">
+@foreach($el->payload->get('items') as $item)
+    <div class="{{$item->classes}} text-center">
         <div class="info">
-            @isset($feature['icon'])
+            @isset($item->icon)
                 <div class="icon icon-primary">
-                    @include('cms::components._partials.icon', ['icon' => $feature['icon']])
+                    @include('cms::components._partials.icon', ['icon' => $item->icon])
                 </div>
             @endisset
-            @isset($feature['title'])
-                <h3 class="info-title">{{$feature['title']}}</h3>
+            @isset($item->title)
+                <h3 class="info-title">{{$item->title}}</h3>
             @endisset
-            @isset($feature['text'])
-                <p>{{$feature['text']}}</p>
+            @isset($item->content)
+                <p>
+                    @include('cms::components._partials.content', ['content' => $item->content, 'isHtml' => $item->isHtmlContent])
+                </p>
             @endisset
         </div>
     </div>

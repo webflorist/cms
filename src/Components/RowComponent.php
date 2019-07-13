@@ -2,9 +2,9 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\Component;
+use Webflorist\Cms\Components\Abstracts\CmsComponent;
 
-class RowComponent extends Component
+class RowComponent extends CmsComponent
 {
     /**
      * RowComponent constructor.

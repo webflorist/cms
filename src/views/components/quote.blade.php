@@ -1,6 +1,6 @@
 <blockquote{!! $el->attributes->render(true) !!}>
-    <p class="m-b-0">{{$el->getPayload('text')}}</p>
+    <p class="m-b-0">{{$el->payload->get('text')}}</p>
     @if($el->hasPayload('footer'))
-        <footer class="blockquote-footer">{{$el->getPayload('footer')}}</footer>
+        <footer class="blockquote-footer">{{$el->payload->get('footer')}}</footer>
     @endif
 </blockquote>

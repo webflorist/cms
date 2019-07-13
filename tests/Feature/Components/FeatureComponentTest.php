@@ -4,6 +4,7 @@ namespace CmsTests\Feature\Elements;
 
 use CmsTests\TestCase;
 use Webflorist\Cms\Components\FeaturesComponent;
+use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 
 class FeatureComponentTest extends TestCase
 {
@@ -33,21 +34,21 @@ class FeatureComponentTest extends TestCase
                 </div>
             ',
             (new FeaturesComponent)
-                ->payload([
-                    'items' => [
-
-                        [
-                            'title' => 'Phone',
-                            'icon' => 'phone',
-                            'text' => 'My Phone Number'
-                        ],
-                        [
-                            'title' => 'E-Mail',
-                            'icon' => 'email',
-                            'text' => 'My E-Mail Address'
-                        ]
-                    ]
-                ])
+                ->payload(
+                    (new CmsComponentPayload)
+                        ->items(
+                            [
+                                (new CmsComponentPayload)
+                                    ->title('Phone')
+                                    ->icon('phone')
+                                    ->content('My Phone Number'),
+                                (new CmsComponentPayload)
+                                    ->title('E-Mail')
+                                    ->icon('email')
+                                    ->content('My E-Mail Address')
+                            ]
+                        )
+                )
         );
     }
 
