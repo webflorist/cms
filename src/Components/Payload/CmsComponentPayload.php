@@ -3,6 +3,7 @@
 namespace Webflorist\Cms\Components\Payload;
 
 use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
+use Webflorist\IconFactory\Payload\IconPayload;
 
 class CmsComponentPayload extends Payload
 {
@@ -48,7 +49,7 @@ class CmsComponentPayload extends Payload
     /**
      * Icon of component.
      *
-     * @var string
+     * @var string|IconPayload
      */
     public $icon;
 
@@ -65,7 +66,11 @@ class CmsComponentPayload extends Payload
         return $this;
     }
 
-    public function icon(string $icon)
+    /**
+     * @param string|IconPayload $icon
+     * @return $this
+     */
+    public function icon($icon)
     {
         $this->icon = $icon;
         return $this;

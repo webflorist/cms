@@ -5,6 +5,7 @@ namespace CmsTests\Feature\Elements;
 use CmsTests\TestCase;
 use Webflorist\Cms\Components\ListComponent;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
+use Webflorist\IconFactory\Payload\IconPayload;
 
 class ListComponentTest extends TestCase
 {
@@ -18,13 +19,17 @@ class ListComponentTest extends TestCase
                     <li class="media">
                         <div class="mr-3 icon icon-primary"> <i class="fas fa-phone"></i> </div>
                         <div class="media-body">
-                            <p>Phone Icon</p>
+                            <p>
+                                Phone Icon
+                            </p>
                         </div>
                     </li>
                     <li class="media">
-                        <div class="mr-3 icon icon-primary"> <i class="fas fa-mail"></i> </div>
+                        <div class="mr-3 icon icon-primary"> <i class="far fa-mail"></i> </div>
                         <div class="media-body">
-                            <p>Mail Icon</p>
+                            <p>
+                                Mail Icon
+                            </p>
                         </div>
                     </li>
                 </ul>
@@ -38,7 +43,10 @@ class ListComponentTest extends TestCase
                                     ->icon('phone')
                                     ->content('Phone Icon'),
                                 (new CmsComponentPayload)
-                                    ->icon('mail')
+                                    ->icon(new IconPayload([
+                                        'name' => 'mail',
+                                        'style' => 'regular'
+                                    ]))
                                     ->content('Mail Icon')
                             ]
                         ))
