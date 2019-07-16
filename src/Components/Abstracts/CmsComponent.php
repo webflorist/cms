@@ -10,6 +10,7 @@ use Webflorist\HtmlFactory\Elements\Abstracts\ContainerElement;
 use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
+use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
 use Webflorist\IconFactory\Payload\IconPayload;
 
 /**
@@ -24,6 +25,15 @@ abstract class CmsComponent extends DivElement
 {
 
     use HasLayout;
+
+
+
+    /**
+     * Payload.
+     *
+     * @var CmsComponentPayload
+     */
+    public $payload;
 
     /**
      * @throws InvalidPayloadException
@@ -42,7 +52,7 @@ abstract class CmsComponent extends DivElement
      */
     protected function beforeDecoration()
     {
-        if ($this->payload->has('items')) {
+        if (isset($this->payload->items)) {
             $this->processItems();
         }
         $this->determineView();
@@ -63,17 +73,14 @@ abstract class CmsComponent extends DivElement
         $this->view('cms::components.' . $viewSuffix);
     }
 
-    /**
-     * @throws PayloadNotFoundException
-     */
     private function processItems()
     {
-        foreach ($this->payload->get('items') as $item) {
+        foreach ($this->payload->items as $item) {
             /** @var CmsComponentPayload $item */
 
             // Add default item-values to items.
-            if ($this->payload->has('itemDefaults')) {
-                foreach ($this->payload->get('itemDefaults') as $key => $value) {
+            if (isset($this->payload->itemDefaults)) {
+                foreach ($this->payload->itemDefaults as $key => $value) {
                     if (is_null($item->{$key})) {
                         $item->{$key} = $value;
                     }

@@ -1,4 +1,4 @@
-@foreach($el->payload->get('items') as $item)
+@foreach($el->payload->items as $item)
     <div class="{{$item->classes}} text-center">
         <div class="info">
             @isset($item->icon)
@@ -11,7 +11,7 @@
             @endisset
             @isset($item->content)
                 <p>
-                    @include('cms::components._partials.content', ['content' => $item->content, 'isHtml' => $item->isHtmlContent])
+                    @include('cms::components._partials.text', ['text' => $item->content, 'isHtml' => $item->isHtmlContent])
                 </p>
             @endisset
         </div>

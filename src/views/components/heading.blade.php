@@ -1,6 +1,6 @@
 <{{$el->getName()}}{!! $el->attributes->render(true) !!}>
-    {{ $el->payload->get('title') }}
-    @if($el->payload->has('subtitle'))
-        <small class="d-block text-muted">{{$el->payload->get('subtitle')}}</small>
+    @include('cms::components._partials.text', ['text' => $el->payload->title, 'isHtml' => $el->payload->isHtmlTitle])
+    @if(isset($el->payload->subtitle))
+        <small class="d-block text-muted">{{$el->payload->subtitle}}</small>
     @endif
 </{{$el->getName()}}>

@@ -25,4 +25,21 @@ class HeadingComponentTest extends TestCase
         );
     }
 
+    public function test_html_title()
+    {
+        $this->assertHtmlEquals(
+            '
+                <h1>
+                    Torquiss cadunt
+                    <br />
+                    in copinga!
+                </h1>
+            ',
+            (new HeadingComponent('h1'))->payload(new CmsComponentPayload([
+                'title' => 'Torquiss cadunt<br />in copinga!',
+                'isHtmlTitle' => true
+            ]))
+        );
+    }
+
 }

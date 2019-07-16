@@ -1,5 +1,5 @@
 <div class="cms-timeline-default-7">
-    @foreach($el->payload->get('items') as $item)
+    @foreach($el->payload->items as $item)
 
         <div class="timeline">
 
@@ -17,7 +17,7 @@
 
                 @isset($item->content)
                     <p class="description">
-                        @include('cms::components._partials.content', ['content' => $item->content, 'isHtml' => $item->isHtmlContent])
+                        @include('cms::components._partials.text', ['text' => $item->content, 'isHtml' => $item->isHtmlContent])
                     </p>
                 @endisset
 

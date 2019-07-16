@@ -27,7 +27,7 @@ class TimelineComponent extends CmsComponent
         parent::beforeDecoration();
 
         // Set default icon.
-        foreach ($this->payload->get('items') as $item) {
+        foreach ($this->payload->items as $item) {
             if (is_null($item->icon)) {
                 $item->icon = 'arrow-alt-circle-down';
             }

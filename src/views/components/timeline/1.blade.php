@@ -1,6 +1,6 @@
 <div class="main-timeline1">
 
-    @foreach($el->payload->get('items') as $item)
+    @foreach($el->payload->items as $item)
 
         <div class="timeline">
 

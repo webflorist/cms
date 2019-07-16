@@ -16,8 +16,8 @@ class BibliographyComponent extends CmsComponent
         parent::beforeDecoration();
 
         // Set default icon.
-        foreach ($this->payload->get('items') as $item) {
-            if (is_null($item->icon)) {
+        foreach ($this->payload->items as $item) {
+            if (!isset($item->icon)) {
                 $item->icon = 'bookmark';
             }
         }

@@ -5,81 +5,28 @@ namespace Webflorist\Cms\Components\Payload;
 use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
 use Webflorist\IconFactory\Payload\IconPayload;
 
+
+/**
+ * Payload for any CmsComponents.
+ *
+ * Class CmsComponentPayload
+ * @package Webflorist\Cms
+ *
+ * Default properties:
+ * =========
+ * @property array                      $items              Array of items (e.g. for a ListComponent)
+ * @property array                      $itemDefaults       Array of default-values for items.
+ * @property string|CmsComponentPayload $title              Title of component.
+ * @property boolean                    $isHtmlTitle        Should $this->title be rendered as HTML or not (default=false).
+ * @property string                     $content            Text or HTML content of component.
+ * @property boolean                    $isHtmlContent      Should $this->content be rendered as HTML or not (default=false).
+ * @property string|IconPayload         $icon               Icon of component.
+ * @property string[]                   $classes            Html-classes to apply to this component.
+ *
+ */
 class CmsComponentPayload extends Payload
 {
-    /**
-     * Array of items
-     * (e.g. for a ListComponent).
-     *
-     * @var array
-     */
-    public $items;
 
-    /**
-     * Array of default-values
-     * for items.
-     *
-     * @var array
-     */
-    public $itemDefaults;
 
-    /**
-     * Title of component.
-     *
-     * @var string|CmsComponentPayload
-     */
-    public $title;
-
-    /**
-     * Text or HTML content
-     * of component.
-     *
-     * @var string
-     */
-    public $content;
-
-    /**
-     * Is $this->content
-     * HTML or not.
-     *
-     * @var boolean
-     */
-    public $isHtmlContent = false;
-
-    /**
-     * Icon of component.
-     *
-     * @var string|IconPayload
-     */
-    public $icon;
-
-    /**
-     * Html-classes to apply to this component.
-     *
-     * @var string[]
-     */
-    public $classes;
-
-    public function items(array $items)
-    {
-        $this->items = $items;
-        return $this;
-    }
-
-    /**
-     * @param string|IconPayload $icon
-     * @return $this
-     */
-    public function icon($icon)
-    {
-        $this->icon = $icon;
-        return $this;
-    }
-
-    public function content(string $content)
-    {
-        $this->content = $content;
-        return $this;
-    }
 
 }
