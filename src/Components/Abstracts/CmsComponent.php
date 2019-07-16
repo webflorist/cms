@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 use Webflorist\HtmlFactory\Components\Traits\HasLayout;
 use Webflorist\HtmlFactory\Elements\Abstracts\ContainerElement;
+use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
 use Webflorist\IconFactory\Payload\IconPayload;
@@ -15,11 +16,11 @@ use Webflorist\IconFactory\Payload\IconPayload;
  * Class CmsComponent
  *
  * This is the main abstract class for a CMS-component.
- * It extends the ContainerElement from the webflorist/htmlfactory package.
+ * It extends the DivElement from the webflorist/htmlfactory package.
  *
  * @package Webflorist\Cms\Components\Abstracts
  */
-abstract class CmsComponent extends ContainerElement
+abstract class CmsComponent extends DivElement
 {
 
     use HasLayout;
