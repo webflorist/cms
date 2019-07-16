@@ -1,5 +1,5 @@
 @foreach($el->payload->items as $item)
-    <div class="{{$item->classes}} text-center">
+    <div class="{{$item->classes ?? ''}} text-center">
         <div class="info">
             @isset($item->icon)
                 <div class="icon icon-primary">
