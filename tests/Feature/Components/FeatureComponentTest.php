@@ -52,4 +52,51 @@ class FeatureComponentTest extends TestCase
         );
     }
 
+    public function test_complex_feature_component_using_item_defaults()
+    {
+
+        $this->assertHtmlEquals(
+            '
+                <div class=" text-center">
+                    <div class="info">
+                        <div class="icon icon-primary"> <i class="fas fa-check"></i> </div>
+                        <h4 class="info-title">
+                            Feature 1 Title
+                        </h4>
+                        <p>My Feature 1 Content</p>
+                    </div>
+                </div>
+                <div class=" text-center">
+                    <div class="info">
+                        <div class="icon icon-primary"> <i class="fas fa-check"></i> </div>
+                        <h4 class="info-title">
+                            Feature 2 Title
+                        </h4>
+                        <p>My Feature 2 Content</p>
+                    </div>
+                </div>
+            ',
+            (new FeaturesComponent)
+                ->payload(
+                    (new CmsComponentPayload)
+                        ->itemDefaults([
+                            'heading' => [
+                                'tag' => 'h4'
+                            ],
+                            'icon' => 'check'
+                        ])
+                        ->items(
+                            [
+                                (new CmsComponentPayload)
+                                    ->heading(new CmsComponentPayload(['title' => 'Feature 1 Title']))
+                                    ->content('My Feature 1 Content'),
+                                (new CmsComponentPayload)
+                                    ->heading(new CmsComponentPayload(['title' => 'Feature 2 Title']))
+                                    ->content('My Feature 2 Content')
+                            ]
+                        )
+                )
+        );
+    }
+
 }

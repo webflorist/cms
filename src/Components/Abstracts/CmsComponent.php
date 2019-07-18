@@ -26,8 +26,6 @@ abstract class CmsComponent extends DivElement
 
     use HasLayout;
 
-
-
     /**
      * Payload.
      *
@@ -46,12 +44,11 @@ abstract class CmsComponent extends DivElement
         $this->payload(new CmsComponentPayload());
     }
 
-
-    /**
-     * @throws PayloadNotFoundException
-     */
     protected function beforeDecoration()
     {
+        if (isset($this->payload->tag)) {
+            $this->overrideName($this->payload->tag);
+        }
         if (isset($this->payload->items)) {
             $this->processItems();
         }
@@ -81,6 +78,17 @@ abstract class CmsComponent extends DivElement
             // Add default item-values to items.
             if (isset($this->payload->itemDefaults)) {
                 foreach ($this->payload->itemDefaults as $key => $value) {
+
+                    // Handle settings of default-values for payloads of sub-components.
+                    if (is_a($item->{$key}, CmsComponentPayload::class) && is_array($value)) {
+                        foreach ($value as $subPayloadKey => $subPayloadValue) {
+                            if (is_null($item->{$key}->$subPayloadKey)) {
+                                $item->{$key}->$subPayloadKey = $subPayloadValue;
+                            }
+                        }
+                    }
+
+                    // Default handling, if $item->{$key} is not a sub-component.
                     if (is_null($item->{$key})) {
                         $item->{$key} = $value;
                     }
