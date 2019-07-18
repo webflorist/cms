@@ -49,6 +49,9 @@ abstract class CmsComponent extends DivElement
         if (isset($this->payload->tag)) {
             $this->overrideName($this->payload->tag);
         }
+        if (isset($this->payload->classes)) {
+            $this->addClasses($this->payload->classes);
+        }
         if (isset($this->payload->items)) {
             $this->processItems();
         }
