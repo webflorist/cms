@@ -1,17 +1,17 @@
 @foreach($el->payload->items as $item)
-    <div class="info text-center {{$item->classes ?? ''}}">
+    <div class="info info-horizontal {{$item->classes ?? ''}}">
         @isset($item->icon)
             <div class="icon icon-primary">
                 {!! icon_factory($item->icon) !!}
             </div>
         @endisset
-        @isset($item->heading)
-            {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title h4') !!}
-        @endisset
-        @isset($item->content)
+        <div class="description">
+            @isset($item->heading)
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title h4') !!}
+            @endisset
             <p>
                 @include('cms::components._partials.text', ['text' => $item->content, 'isHtml' => $item->isHtmlContent])
             </p>
-        @endisset
+        </div>
     </div>
 @endforeach

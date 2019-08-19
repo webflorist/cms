@@ -3,8 +3,10 @@
 namespace Webflorist\Cms\Components\Factory;
 
 use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\BibliographyComponent;
 use Webflorist\Cms\Components\ColumnComponent;
 use Webflorist\Cms\Components\HeadingComponent;
+use Webflorist\Cms\Components\ListComponent;
 use Webflorist\Cms\Exceptions\InvalidAccessorException;
 
 /**
@@ -19,6 +21,8 @@ use Webflorist\Cms\Exceptions\InvalidAccessorException;
  * ===========
  * @method static ColumnComponent             column(array $data, array $children=[])
  * @method static HeadingComponent            heading(string $tag='h1')
+ * @method static ListComponent               list(string $tag='ul')
+ * @method static BibliographyComponent       bibliography()
  *
  */
 class CmsComponentFactory

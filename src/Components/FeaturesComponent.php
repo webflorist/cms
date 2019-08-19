@@ -8,13 +8,12 @@ class FeaturesComponent extends CmsComponent
 {
 
     /**
-     * Returns the name of the element.
-     *
-     * @return string
+     * FeatureComponent constructor.
      */
-    public function getName(): string
+    public function __construct(string $tag='div')
     {
-        return $this->hasData('tag') ? $this->getData('tag') : 'section';
+        parent::__construct();
+        $this->overrideName($tag);
     }
 
 }
