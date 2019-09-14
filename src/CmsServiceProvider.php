@@ -28,7 +28,7 @@ class CmsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfig();
-        $this->loadMigrations();
+        //$this->loadMigrations();
         $this->loadTranslations();
         $this->loadViews();
         $this->setBladeDirectives();
@@ -38,7 +38,7 @@ class CmsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/config/cms.php', 'cms');
     }
-    
+
     protected function registerService()
     {
         $this->app->singleton(CmsService::class, function()
