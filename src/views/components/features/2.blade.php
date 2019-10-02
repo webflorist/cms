@@ -1,9 +1,9 @@
 <{{$el->getName()}}{!! $el->addClass('row')->attributes->render(true) !!}>
 @foreach($el->payload->items as $item)
-    <div class="col card-deck {{$item->classes ?? ''}}">
-        <div class="card bg-primary text-center mb-4" data-background="color">
+    <div class="col {{$item->classes ?? ''}}">
+        <div class="card bg-primary text-center text-white mb-4">
             @isset($item->heading)
-                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary text-white h5') !!}
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary-dark h6') !!}
             @endisset
             <div class="card-body">
                 @isset($item->icon)

@@ -2,7 +2,7 @@
     @foreach($el->payload->items as $item)
         <li class="media">
             @isset($item->icon)
-                <div class="mr-3 icon icon-primary">
+                <div class="mr-3 icon text-primary">
                     {!! icon_factory($item->icon) !!}
                 </div>
             @endisset

@@ -1,7 +1,7 @@
 @foreach($el->payload->items as $item)
     <div class="info info-horizontal {{$item->classes ?? ''}}">
         @isset($item->icon)
-            <div class="icon icon-primary">
+            <div class="icon text-primary">
                 {!! icon_factory($item->icon) !!}
             </div>
         @endisset
