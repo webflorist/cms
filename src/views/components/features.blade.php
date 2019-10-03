@@ -7,7 +7,7 @@
                 </div>
             @endisset
             @isset($item->heading)
-                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title h4') !!}
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title') !!}
             @endisset
             @isset($item->content)
                 <p>

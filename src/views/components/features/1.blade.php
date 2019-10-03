@@ -7,7 +7,7 @@
         @endisset
         <div class="description">
             @isset($item->heading)
-                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title h4') !!}
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('info-title') !!}
             @endisset
             <p>
                 @include('cms::components._partials.text', ['text' => $item->content, 'isHtml' => $item->isHtmlContent])
