@@ -23,7 +23,7 @@ use Webflorist\IconFactory\Payload\IconPayload;
  * @property boolean                    $isHtmlContent      Should $this->content be rendered as HTML or not (default=false).
  * @property CmsComponentPayload        $heading            Payload to use for heading-sub-component.
  * @property string|IconPayload         $icon               Icon of component.
- * @property string|LinkPayload         $link               Main Link of component.
+ * @property string|CmsLinkPayload      $link               Main Link of component.
  * @property string[]                   $classes            Html-classes to apply to this component.
  * @property string                     $id                 Html-id to apply to this component.
  *
@@ -38,7 +38,7 @@ use Webflorist\IconFactory\Payload\IconPayload;
  * @method   $this                      isHtmlContent(bool $isHtmlContent)
  * @method   $this                      heading(CmsComponentPayload $headingPayload)
  * @method   $this                      icon(mixed $title)
- * @method   $this                      link(LinkPayload $linkPayload)
+ * @method   $this                      link(CmsLinkPayload $linkPayload)
  * @method   $this                      classes(string[] $classes)
  * @method   $this                      id(string $id)
  *
