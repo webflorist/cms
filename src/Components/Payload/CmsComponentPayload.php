@@ -29,18 +29,18 @@ use Webflorist\IconFactory\Payload\IconPayload;
  *
  * Setters for default properties:
  * ===============================
- * @method   $this                      items(array $items)
- * @method   $this                      itemDefaults(array $itemDefaults)
- * @method   $this                      tag(string $tag)
- * @method   $this                      title(mixed $title)
- * @method   $this                      isHtmlTitle(bool $isHtmlTitle)
- * @method   $this                      content(string $content)
- * @method   $this                      isHtmlContent(bool $isHtmlContent)
- * @method   $this                      heading(CmsComponentPayload $headingPayload)
- * @method   $this                      icon(mixed $title)
- * @method   $this                      link(CmsLinkPayload $linkPayload)
- * @method   $this                      classes(string[] $classes)
- * @method   $this                      id(string $id)
+ * @method   CmsComponentPayload                      items(array $items)
+ * @method   CmsComponentPayload                      itemDefaults(array $itemDefaults)
+ * @method   CmsComponentPayload                      tag(string $tag)
+ * @method   CmsComponentPayload                      title(mixed $title)
+ * @method   CmsComponentPayload                      isHtmlTitle(bool $isHtmlTitle)
+ * @method   CmsComponentPayload                      content(string $content)
+ * @method   CmsComponentPayload                      isHtmlContent(bool $isHtmlContent)
+ * @method   CmsComponentPayload                      heading(CmsComponentPayload $headingPayload)
+ * @method   CmsComponentPayload                      icon(mixed $title)
+ * @method   CmsComponentPayload                      link(CmsLinkPayload $linkPayload)
+ * @method   CmsComponentPayload                      classes(string[] $classes)
+ * @method   CmsComponentPayload                      id(string $id)
  *
  */
 class CmsComponentPayload extends Payload
