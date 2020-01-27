@@ -1,9 +1,15 @@
 <{{$el->getName()}}{!! $el->addClass('row')->attributes->render(true) !!}>
 @foreach($el->payload->items as $item)
     <div class="col {{$item->classes ?? ''}}">
-        <div class="card bg-primary text-center text-white mb-4">
+        <div class="card bg-primary text-center text-white mb-4 on-hover-up">
             @isset($item->heading)
-                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary-dark h6') !!}
+                @isset($item->link)
+                    <a href="{{$item->link->href}}" class="stretched-link text-white text-decoration-none">
+                @endisset
+                        {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary-dark h6') !!}
+                @isset($item->link)
+                    </a>
+                @endisset
             @endisset
             <div class="card-body">
                 @isset($item->icon)
@@ -17,10 +23,8 @@
             </div>
             @isset($item->link)
                 <div class="card-footer">
-                    <a href="{{$item->link->href}}" class="btn btn-link btn-neutral btn-move-right stretched-link">
                         Mehr Infos
                         <i class="fas fa-caret-right ml-2"></i>
-                    </a>
                 </div>
             @endisset
         </div>
