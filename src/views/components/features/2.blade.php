@@ -4,9 +4,9 @@
         <div class="card bg-primary text-center text-white mb-4 on-hover-up">
             @isset($item->heading)
                 @isset($item->link)
-                    <a href="{{$item->link->href}}" class="stretched-link text-white text-decoration-none">
+                    <a href="{{$item->link->getHref()}}" @if($item->link->hasTitle()) title="{{$item->link->getTitle()}}" @endif class="stretched-link text-white text-decoration-none">
                 @endisset
-                        {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary-dark h6') !!}
+                {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClass('card-header bg-primary-dark h6') !!}
                 @isset($item->link)
                     </a>
                 @endisset
