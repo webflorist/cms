@@ -10,7 +10,6 @@
     "require": {
     	"laravel/framework": ">=5.5 <7.0.0",
         "webflorist/htmlfactory": "dev-develop",
-        "webflorist/iconfactory": "dev-develop",
         "webflorist/routetree": "^2.0"
     },
     "require-dev": {
@@ -26,23 +25,6 @@
             "src/helpers.php"
         ]
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/webflorist/iconfactory",
-            "no-api": true
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/webflorist/routetree",
-            "no-api": true
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/webflorist/htmlfactory",
-            "no-api": true
-        }
-    ],
     "extra": {
         "laravel": {
             "providers": [
