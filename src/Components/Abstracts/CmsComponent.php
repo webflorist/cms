@@ -6,12 +6,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 use Webflorist\HtmlFactory\Components\Traits\HasLayout;
-use Webflorist\HtmlFactory\Elements\Abstracts\ContainerElement;
 use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
-use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
-use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
-use Webflorist\IconFactory\Payload\IconPayload;
 
 /**
  * Class CmsComponent

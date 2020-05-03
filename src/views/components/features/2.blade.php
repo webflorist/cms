@@ -13,7 +13,7 @@
             @endisset
             <div class="card-body">
                 @isset($item->icon)
-                    {!! icon_factory($item->icon)->addClass('fa-4x') !!}
+                    <i class="{{$item->icon}} fa-4x"></i>
                 @endisset
                 @isset($item->content)
                     <p class="card-description">

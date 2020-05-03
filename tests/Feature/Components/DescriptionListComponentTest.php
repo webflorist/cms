@@ -6,7 +6,6 @@ use CmsTests\TestCase;
 use Webflorist\Cms\Components\DescriptionListComponent;
 use Webflorist\Cms\Components\ListComponent;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
-use Webflorist\IconFactory\Payload\IconPayload;
 
 class DescriptionListComponentTest extends TestCase
 {

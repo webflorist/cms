@@ -4,7 +4,7 @@
         <div class="timeline">
 
             <div class="timeline-icon">
-                {!! icon_factory($item->icon) !!}
+                <i class="{{$item->icon}}"></i>
             </div>
 
             <span class="year">{{$item->date}}</span>

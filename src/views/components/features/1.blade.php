@@ -2,7 +2,7 @@
     <div class="info info-horizontal {{$item->classes ?? ''}}">
         @isset($item->icon)
             <div class="icon text-primary">
-                {!! icon_factory($item->icon) !!}
+                <i class="{{$item->icon}}"></i>
             </div>
         @endisset
         <div class="description">

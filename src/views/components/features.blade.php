@@ -3,7 +3,7 @@
         <div class="col info text-center {{$item->classes ?? ''}}">
             @isset($item->icon)
                 <div class="icon text-primary">
-                    {!! icon_factory($item->icon) !!}
+                    <i class="{{$item->icon}}"></i>
                 </div>
             @endisset
             @isset($item->heading)

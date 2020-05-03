@@ -3,7 +3,7 @@
     <li class="media">
         @isset($item->icon)
             <div class="mr-3 icon text-primary">
-                {!! icon_factory($item->icon) !!}
+                <i class="{{$item->icon}}"></i>
             </div>
         @endisset
         <div class="media-body position-relative">

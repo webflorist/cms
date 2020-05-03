@@ -3,7 +3,6 @@
 namespace Webflorist\Cms\Components\Payload;
 
 use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
-use Webflorist\IconFactory\Payload\IconPayload;
 
 
 /**
@@ -22,7 +21,7 @@ use Webflorist\IconFactory\Payload\IconPayload;
  * @property string                     $content            Text or HTML content of component.
  * @property boolean                    $isHtmlContent      Should $this->content be rendered as HTML or not (default=false).
  * @property CmsComponentPayload        $heading            Payload to use for heading-sub-component.
- * @property string|IconPayload         $icon               Icon of component.
+ * @property string                     $icon               Icon of component.
  * @property string|CmsLinkPayload      $link               Main Link of component.
  * @property string[]                   $classes            Html-classes to apply to this component.
  * @property string                     $id                 Html-id to apply to this component.
