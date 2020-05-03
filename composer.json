@@ -1,6 +1,6 @@
 {
     "name": "webflorist/cms",
-    "description": "Webflorist CMS for Laravel 5.5 upwards",
+    "description": "Webflorist CMS for Laravel (v5.5+ and v6)",
     "authors": [
         {
             "name": "Gerald Buttinger",
@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-		"laravel/framework": "~5.5",
+    	"laravel/framework": ">=5.5 <7.0.0",
         "webflorist/htmlfactory": "dev-develop",
         "webflorist/iconfactory": "dev-develop",
         "webflorist/routetree": "^2.0"
