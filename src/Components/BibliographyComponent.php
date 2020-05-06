@@ -18,7 +18,7 @@ class BibliographyComponent extends CmsComponent
         // Set default icon.
         foreach ($this->payload->items as $item) {
             if (!isset($item->icon)) {
-                $item->icon = 'bookmark';
+                $item->icon = 'fas fa-bookmark';
             }
         }
     }
