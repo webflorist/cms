@@ -1,6 +1,6 @@
 <?php
 
-namespace Webflorist\Cms\Components\Abstracts;
+namespace Webflorist\Cms\Components\Traits;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -10,14 +10,13 @@ use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
 
 /**
- * Class CmsComponent
+ * Trait CmsComponent
  *
- * This is the main abstract class for a CMS-component.
- * It extends the DivElement from the webflorist/htmlfactory package.
+ * This is the main trait for a CMS-component.
  *
- * @package Webflorist\Cms\Components\Abstracts
+ * @package Webflorist\Cms\Components\Traits
  */
-abstract class CmsComponent extends DivElement
+trait CmsComponent
 {
 
     use HasLayout;
@@ -32,7 +31,7 @@ abstract class CmsComponent extends DivElement
     /**
      * @throws InvalidPayloadException
      */
-    protected function setUp()
+    protected function setUpCmsComponent()
     {
         parent::setUp();
 
@@ -40,8 +39,10 @@ abstract class CmsComponent extends DivElement
         $this->payload(new CmsComponentPayload());
     }
 
-    protected function beforeDecoration()
+    protected function beforeDecorationOfCmsComponent()
     {
+        parent::beforeDecoration();
+
         if (isset($this->payload->tag)) {
             $this->overrideName($this->payload->tag);
         }

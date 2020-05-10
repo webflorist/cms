@@ -2,10 +2,13 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
+use Webflorist\HtmlFactory\Elements\DivElement;
 
-class ListComponent extends CmsComponent
+class ListComponent extends DivElement
 {
+    use CmsComponent;
+
     /**
      * RowComponent constructor.
      */
@@ -13,6 +16,16 @@ class ListComponent extends CmsComponent
     {
         parent::__construct();
         $this->overrideName($tag);
+    }
+
+    protected function setUp()
+    {
+        $this->setUpCmsComponent();
+    }
+
+    protected function beforeDecoration()
+    {
+        $this->beforeDecorationOfCmsComponent();
     }
 
 }

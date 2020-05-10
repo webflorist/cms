@@ -2,11 +2,13 @@
 
 namespace Webflorist\Cms\Components\Factory;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
 use Webflorist\Cms\Components\BibliographyComponent;
 use Webflorist\Cms\Components\ColumnComponent;
 use Webflorist\Cms\Components\HeadingComponent;
 use Webflorist\Cms\Components\ListComponent;
+use Webflorist\Cms\Components\LinkComponent;
+use Webflorist\Cms\Components\Payload\CmsLinkPayload;
 use Webflorist\Cms\Exceptions\InvalidAccessorException;
 
 /**
@@ -19,10 +21,11 @@ use Webflorist\Cms\Exceptions\InvalidAccessorException;
  *
  * Components:
  * ===========
- * @method static ColumnComponent             column(array $data, array $children=[])
- * @method static HeadingComponent            heading(string $tag='h1')
- * @method static ListComponent               list(string $tag='ul')
- * @method static BibliographyComponent       bibliography()
+ * @method ColumnComponent             column(array $data, array $children=[])
+ * @method HeadingComponent            heading(string $tag='h1')
+ * @method ListComponent               list(string $tag='ul')
+ * @method BibliographyComponent       bibliography()
+ * @method LinkComponent               link()
  *
  */
 class CmsComponentFactory

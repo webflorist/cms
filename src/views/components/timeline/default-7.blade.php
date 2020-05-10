@@ -12,7 +12,7 @@
             <div class="timeline-content">
 
                 @isset($item->heading)
-                    {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading) !!}
+                    {!! cms()->create()->heading($item->heading->tag)->payload($item->heading) !!}
                 @endisset
 
                 @isset($item->content)

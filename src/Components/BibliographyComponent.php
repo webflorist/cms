@@ -2,18 +2,20 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
+use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
 
-class BibliographyComponent extends CmsComponent
+class BibliographyComponent extends DivElement
 {
+    use \Webflorist\Cms\Components\Traits\CmsComponent;
 
     /**
      * @throws PayloadNotFoundException
      */
     protected function beforeDecoration()
     {
-        parent::beforeDecoration();
+        $this->beforeDecorationOfCmsComponent();
 
         // Set default icon.
         foreach ($this->payload->items as $item) {

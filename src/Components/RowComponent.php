@@ -2,10 +2,13 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
+use Webflorist\HtmlFactory\Elements\DivElement;
 
-class RowComponent extends CmsComponent
+class RowComponent extends DivElement
 {
+    use \Webflorist\Cms\Components\Traits\CmsComponent;
+
     /**
      * RowComponent constructor.
      * @param string $tag
@@ -18,11 +21,16 @@ class RowComponent extends CmsComponent
 
     protected function setUp()
     {
-        parent::setUp();
+        $this->setUpCmsComponent();
 
         // Bootstrap-specific.
         $this->addClass('row');
 
+    }
+
+    protected function beforeDecoration()
+    {
+        $this->beforeDecorationOfCmsComponent();
     }
 
 

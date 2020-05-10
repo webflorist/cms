@@ -11,7 +11,7 @@
                 <div class="inner-content">
 
                     @isset($item['heading'])
-                        {!! cms()->createComponent()->heading($item['heading']) !!}
+                        {!! cms()->create()->heading($item['heading']) !!}
                     @endisset
 
                     @isset($item['content'])

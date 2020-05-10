@@ -2,24 +2,24 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
+use Webflorist\HtmlFactory\Elements\BlockquoteElement;
 
-class QuoteComponent extends CmsComponent
+class QuoteComponent extends BlockquoteElement
 {
-
-    /**
-     * The name (=tag) of this element.
-     *
-     * @var string
-     */
-    protected $name = 'blockquote';
+    use CmsComponent;
 
     protected function setUp()
     {
-        parent::setUp();
+        $this->setUpCmsComponent();
 
         // Bootstrap-specific.
         $this->addClass('blockquote');
 
+    }
+
+    protected function beforeDecoration()
+    {
+        $this->beforeDecorationOfCmsComponent();
     }
 }

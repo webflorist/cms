@@ -20,7 +20,6 @@ class CmsService
      */
     private $componentFactory;
 
-
     /**
      * CmsService constructor.
      * @param RouteTree $routeTree
@@ -69,7 +68,7 @@ class CmsService
      *
      * @return CmsComponentFactory
      */
-    public function createComponent(): CmsComponentFactory
+    public function create(): CmsComponentFactory
     {
         return $this->componentFactory;
     }

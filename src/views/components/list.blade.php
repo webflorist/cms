@@ -8,7 +8,7 @@
             @endisset
             <div class="media-body">
                 @isset($item->heading)
-                    {!! cms()->createComponent()->heading($item->heading->tag)->payload($item->heading)->addClasses(['mt-0', 'mb-1']) !!}
+                    {!! cms()->create()->heading($item->heading->tag)->payload($item->heading)->addClasses(['mt-0', 'mb-1']) !!}
                 @endisset
                 @isset($item->content)
                     <p>

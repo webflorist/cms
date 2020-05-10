@@ -2,10 +2,15 @@
 
 namespace Webflorist\Cms\Components;
 
-use Webflorist\Cms\Components\Abstracts\CmsComponent;
+use Webflorist\Cms\Components\Traits\CmsComponent;
+use Webflorist\Cms\Components\Payload\CmsComponentPayload;
+use Webflorist\HtmlFactory\Elements\DivElement;
+use Webflorist\HtmlFactory\Exceptions\PayloadNotFoundException;
 
-class ColumnComponent extends CmsComponent
+class ColumnComponent extends DivElement
 {
+    use \Webflorist\Cms\Components\Traits\CmsComponent;
+
     /**
      * RowComponent constructor.
      */
@@ -17,11 +22,15 @@ class ColumnComponent extends CmsComponent
 
     protected function setUp()
     {
-        parent::setUp();
+        $this->setUpCmsComponent();
 
         // Bootstrap-specific.
         $this->addClass('col');
+    }
 
+    protected function beforeDecoration()
+    {
+        $this->beforeDecorationOfCmsComponent();
     }
 
 
