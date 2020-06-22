@@ -6,7 +6,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
 use Webflorist\HtmlFactory\Components\Traits\HasLayout;
-use Webflorist\HtmlFactory\Elements\DivElement;
 use Webflorist\HtmlFactory\Exceptions\InvalidPayloadException;
 
 /**
@@ -66,11 +65,15 @@ trait CmsComponent
 
     private function determineView()
     {
+        $viewPrefix = 'cms::components.';
         $viewSuffix = $this->getComponentName();
         if ($this->hasLayout()) {
-            $viewSuffix .= '.' . $this->getLayout();
+            $viewSuffixWithLayout = $viewSuffix . '.' . $this->getLayout();
+            if (view()->exists($viewPrefix . $viewSuffixWithLayout)) {
+                $viewSuffix = $viewSuffixWithLayout;
+            }
         }
-        $this->view('cms::components.' . $viewSuffix);
+        $this->view($viewPrefix . $viewSuffix);
     }
 
     private function processItems()
@@ -100,7 +103,6 @@ trait CmsComponent
         }
 
     }
-
 
 
 }

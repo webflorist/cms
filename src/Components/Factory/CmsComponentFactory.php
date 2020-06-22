@@ -2,14 +2,19 @@
 
 namespace Webflorist\Cms\Components\Factory;
 
+use Webflorist\Cms\Components\FeaturesComponent;
+use Webflorist\Cms\Components\LinkListComponent;
 use Webflorist\Cms\Components\Traits\CmsComponent;
 use Webflorist\Cms\Components\BibliographyComponent;
 use Webflorist\Cms\Components\ColumnComponent;
 use Webflorist\Cms\Components\HeadingComponent;
 use Webflorist\Cms\Components\ListComponent;
 use Webflorist\Cms\Components\LinkComponent;
+use Webflorist\Cms\Components\SchemaComponent;
+use Webflorist\Cms\Components\SectionComponent;
 use Webflorist\Cms\Components\Payload\CmsLinkPayload;
 use Webflorist\Cms\Exceptions\InvalidAccessorException;
+use Webflorist\HtmlFactory\Elements\Abstracts\Element;
 
 /**
  * Factory to create CMS components.
@@ -21,11 +26,15 @@ use Webflorist\Cms\Exceptions\InvalidAccessorException;
  *
  * Components:
  * ===========
- * @method ColumnComponent             column(array $data, array $children=[])
+ * @method ColumnComponent             column(string $tag='div')
+ * @method SectionComponent            section(string $tag='section')
+ * @method LinkListComponent           linkList(string $tag='section')
  * @method HeadingComponent            heading(string $tag='h1')
  * @method ListComponent               list(string $tag='ul')
  * @method BibliographyComponent       bibliography()
  * @method LinkComponent               link()
+ * @method FeaturesComponent           features()
+ * @method SchemaComponent             schema(string $type)
  *
  */
 class CmsComponentFactory
@@ -63,6 +72,13 @@ class CmsComponentFactory
         // If the accessor is neither a element nor a component, we throw an exception.
         throw new InvalidAccessorException('No component found for accessor "'.$accessor.'".');
 
+    }
+
+    public function from(string $resourceId) : Element
+    {
+        return cms()->adapter->mapResourceToComponent(
+            cms()->adapter->getResource($resourceId)
+        );
     }
 
     public function generateElementFromArray(array $elementData)

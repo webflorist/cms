@@ -17,6 +17,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @property array                      $itemDefaults       Array of default-values for items.
  * @property string                     $tag                Tag to use for the root HTML-element.
  * @property string|CmsComponentPayload $title              Title of component.
+ * @property string|CmsComponentPayload $subtitle           Subtitle of component.
  * @property boolean                    $isHtmlTitle        Should $this->title be rendered as HTML or not (default=false).
  * @property string                     $content            Text or HTML content of component.
  * @property boolean                    $isHtmlContent      Should $this->content be rendered as HTML or not (default=false).
@@ -32,6 +33,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @method   CmsComponentPayload                      itemDefaults(array $itemDefaults)
  * @method   CmsComponentPayload                      tag(string $tag)
  * @method   CmsComponentPayload                      title(mixed $title)
+ * @method   CmsComponentPayload                      subtitle(mixed $subtitle)
  * @method   CmsComponentPayload                      isHtmlTitle(bool $isHtmlTitle)
  * @method   CmsComponentPayload                      content(string $content)
  * @method   CmsComponentPayload                      isHtmlContent(bool $isHtmlContent)
