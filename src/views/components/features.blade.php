@@ -17,7 +17,7 @@
                 </h3>
                 <div class="card-body bg-white bg-wiese d-flex flex-xl-column align-items-center p-4">
                     <i class="{{route_node($item->node)->payload->icon}} fa-4x mr-3 mb-xl-3 text-primary-dark"></i>
-                    <p class="text-justify text-base">
+                    <p class="text-justify text-secondary-dark text-base">
                         {{$item->content}}
                     </p>
                 </div>

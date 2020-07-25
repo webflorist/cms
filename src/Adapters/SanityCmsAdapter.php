@@ -30,7 +30,7 @@ class SanityCmsAdapter extends CmsAdapter
             'projectId' => config('cms.services.sanity.project_id'),
             'dataset' => config('cms.services.sanity.dataset'),
             'apiVersion' => config('cms.services.sanity.api_version'),
-            'useCdn' => false
+            'useCdn' => config('cms.services.sanity.use_cdn'),
         ]);
     }
 
