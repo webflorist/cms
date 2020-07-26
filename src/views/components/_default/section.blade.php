@@ -1,4 +1,9 @@
-<section class="row w-100 justify-content-center mb-3">
+@php
+    /** @var \Webflorist\Cms\Components\SectionComponent $el */
+    $el->addClass('row w-100 justify-content-center mb-3');
+@endphp
+
+{!! $el->renderStartTag() !!}
 
     <div class="col col-md-8">
         @isset($el->payload->heading)
@@ -21,4 +26,5 @@
             {!! $slot !!}
         </div>
     @endif
-</section>
+
+{!! $el->renderEndTag() !!}
