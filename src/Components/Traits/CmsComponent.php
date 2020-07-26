@@ -51,6 +51,9 @@ trait CmsComponent
         if (isset($this->payload->id)) {
             $this->id($this->payload->id);
         }
+        if (isset($this->payload->layout)) {
+            $this->layout($this->payload->layout);
+        }
         if (isset($this->payload->items)) {
             $this->processItems();
         }

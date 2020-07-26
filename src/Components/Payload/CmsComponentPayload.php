@@ -26,6 +26,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @property string|CmsLinkPayload      $link               Main Link of component.
  * @property string[]                   $classes            Html-classes to apply to this component.
  * @property string                     $id                 Html-id to apply to this component.
+ * @property string                     $layout             Layout to use for this component.
  *
  * Setters for default properties:
  * ===============================
@@ -42,6 +43,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @method   CmsComponentPayload                      link(CmsLinkPayload $linkPayload)
  * @method   CmsComponentPayload                      classes(string[] $classes)
  * @method   CmsComponentPayload                      id(string $id)
+ * @method   CmsComponentPayload                      layout(string $layout)
  *
  */
 class CmsComponentPayload extends Payload

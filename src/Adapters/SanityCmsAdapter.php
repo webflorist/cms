@@ -12,6 +12,7 @@ use Webflorist\Cms\Components\Payload\CmsLinkPayload;
 use Webflorist\Cms\Components\Traits\CmsComponent;
 use Webflorist\HtmlFactory\Elements\Abstracts\Element;
 use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
+use Webflorist\RouteTree\RouteNode;
 
 class SanityCmsAdapter extends CmsAdapter
 {
@@ -30,7 +31,7 @@ class SanityCmsAdapter extends CmsAdapter
             'projectId' => config('cms.services.sanity.project_id'),
             'dataset' => config('cms.services.sanity.dataset'),
             'apiVersion' => config('cms.services.sanity.api_version'),
-            'useCdn' => config('cms.services.sanity.use_cdn'),
+            'useCdn' => config('cms.services.sanity.use_cdn')
         ]);
     }
 
@@ -38,7 +39,7 @@ class SanityCmsAdapter extends CmsAdapter
     {
         return Cache::remember(
             $query . implode(' ', $params),
-            300,
+            config('cms.services.sanity.cache_ttl'),
             function () use ($query, $params) {
                 return $this->client->fetch($query, $params);
             }
@@ -80,6 +81,27 @@ class SanityCmsAdapter extends CmsAdapter
         return $pageContent;
     }
 
+    public function setUpRouteNode(RouteNode $node) : void
+    {
+
+        $pageData = $this->fetch(
+            '*[_type=="page" && node==$node]',
+            [
+                'node' => $node->getId()
+            ]
+        )[0];
+
+        $node->payload->title = $pageData['title'];
+
+        if (isset($pageData['navTitle'])) {
+            $node->payload->navTitle = $pageData['navTitle'];
+        }
+
+        if (isset($pageData['description'])) {
+            $node->payload->description = $pageData['description'];
+        }
+    }
+
 
     public function mapResourceToComponent(array $resourceData): Element
     {
@@ -98,8 +120,27 @@ class SanityCmsAdapter extends CmsAdapter
             return new CmsLinkPayload($resourceData);
         }
 
+        if ($resourceData['_type'] === 'internalLink') {
+            return $this->createInternalLinkPayload($resourceData);
+        }
+
         if ($resourceData['_type'] === 'feature') {
-            $resourceData['node'] = $this->getResource($resourceData['reference']['_ref'])['node'];
+            if (isset($resourceData['reference']['_ref'])) {
+                $resourceData['node'] = $this->getResource($resourceData['reference']['_ref'])['node'];
+            }
+            if (isset($resourceData['link'])) {
+                $resourceData['link'] = $this->createInternalLinkPayload($resourceData['link']);
+            }
+            return new CmsComponentPayload($resourceData);
+        }
+
+        if ($resourceData['_type'] === 'menuItem') {
+            if (isset($resourceData['content'])) {
+                $resourceData['content'] = self::toHtml($resourceData['content']);
+            }
+            if (isset($resourceData['reference']['_ref'])) {
+                $resourceData = array_merge($resourceData, $this->getResource($resourceData['reference']['_ref']));
+            }
             return new CmsComponentPayload($resourceData);
         }
 
@@ -121,6 +162,7 @@ class SanityCmsAdapter extends CmsAdapter
             foreach ($resourceData['items'] as $itemData) {
                 $itemPayloads[] = $this->mapResourceToPayload($itemData);
             }
+
             $payload->items($itemPayloads);
             unset($resourceData['items']);
         }
@@ -235,5 +277,45 @@ class SanityCmsAdapter extends CmsAdapter
                 ]
             ]
         ]);
+    }
+
+    /**
+     * @param array $resourceData
+     * @return CmsLinkPayload
+     */
+    private function createInternalLinkPayload(array $resourceData): CmsLinkPayload
+    {
+        $linkPayload = new CmsLinkPayload();
+        $linkedResource = $this->getResource($resourceData['reference']['_ref']);
+
+        if ($resourceData['blank'] ?? false) {
+            $linkPayload->targetBlank();
+        }
+
+        if ($linkedResource['_type'] === 'contactData') {
+            $linkPayload->href('#kontakt');
+        } else {
+            $page = $linkedResource;
+
+            if ($linkedResource['_type'] !== 'page') {
+                $page = $this->getPageOfContent($mark['reference']['_ref']);
+            }
+
+            $linkPayload->toRouteNode(
+                ($page['node'] === 'home') ? '' : $page['node']
+            );
+
+            if ($linkedResource['_type'] !== 'page') {
+
+                // If linked to current page, we remove the href, so only the anchor is set.
+                if ($page['node'] === route_node()->getId()) {
+                    $linkPayload->href('');
+                }
+
+                $linkPayload->title($linkPayload->title . ': ' . $linkedResource['heading']['title']);
+                $linkPayload->anchor($linkedResource['id']['current']);
+            }
+        }
+        return $linkPayload;
     }
 }

@@ -41,7 +41,7 @@ class LinkComponent extends AElement
             $this->target($this->payload->target);
         }
 
-        if (isset($this->payload->title)) {
+        if (!$this->content->hasContent() && isset($this->payload->title)) {
             $this->content($this->payload->title);
         }
 

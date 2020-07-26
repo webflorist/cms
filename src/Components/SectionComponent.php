@@ -12,7 +12,6 @@ class SectionComponent extends SectionElement
     protected function setUp()
     {
         $this->setUpCmsComponent();
-
     }
 
     protected function beforeDecoration()

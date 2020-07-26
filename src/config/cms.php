@@ -22,10 +22,11 @@ return [
 
         // Config for Sanity CMS
         'sanity' => [
-              'project_id' => env('SANITY_PROJECT_ID', 'your-project-id'),
-              'dataset' => env('SANITY_DATASET', 'your-dataset-name'),
-              'api_version' => env('SANITY_API_VERSION', '2020-05-25'),
-            'use_cdn' => env('SANITY_USE_CDN', false)
+            'project_id' => env('SANITY_PROJECT_ID', 'your-project-id'),
+            'dataset' => env('SANITY_DATASET', 'your-dataset-name'),
+            'api_version' => env('SANITY_API_VERSION', '2020-05-25'),
+            'use_cdn' => env('SANITY_USE_CDN', false),
+            'cache_ttl' => env('SANITY_CACHE_TTL', 300)
         ]
 
     ]

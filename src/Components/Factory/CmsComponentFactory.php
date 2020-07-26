@@ -32,7 +32,7 @@ use Webflorist\HtmlFactory\Elements\Abstracts\Element;
  * @method HeadingComponent            heading(string $tag='h1')
  * @method ListComponent               list(string $tag='ul')
  * @method BibliographyComponent       bibliography()
- * @method LinkComponent               link()
+ * @method LinkComponent               link(?CmsLinkPayload $linkPayload = null)
  * @method FeaturesComponent           features()
  * @method SchemaComponent             schema(string $type)
  *
