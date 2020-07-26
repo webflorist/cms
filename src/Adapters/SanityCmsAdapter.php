@@ -100,6 +100,10 @@ class SanityCmsAdapter extends CmsAdapter
         if (isset($pageData['description'])) {
             $node->payload->description = $pageData['description'];
         }
+
+        if (isset($pageData['subtitle'])) {
+            $node->payload->subtitle = $pageData['subtitle'];
+        }
     }
 
 
