@@ -2,7 +2,6 @@
 
 namespace Webflorist\Cms\Adapters;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Sanity\BlockContent;
 use Sanity\Client;
@@ -37,12 +36,25 @@ class SanityCmsAdapter extends CmsAdapter
 
     protected function fetch(string $query, ?array $params = [])
     {
-        return Cache::remember(
-            $query . implode(' ', $params),
-            config('cms.services.sanity.cache_ttl'),
-            function () use ($query, $params) {
-                return $this->client->fetch($query, $params);
-            }
+        $cacheKey = $query . implode(' ', $params);
+        $cacheTtl = config('cms.services.sanity.cache_ttl');
+        $cacheClosure = function () use ($query, $params) {
+            return $this->client->fetch($query, $params);
+        };
+
+        if ($cacheTtl > 0) {
+            return cache()->remember(
+                $cacheKey,
+                $cacheTtl,
+                $cacheClosure
+            );
+        }
+
+        // For non-caching, we use the array-store
+        // to cache at least per request.
+        return cache()->store('array')->rememberForever(
+            $cacheKey,
+            $cacheClosure
         );
     }
 
@@ -81,7 +93,7 @@ class SanityCmsAdapter extends CmsAdapter
         return $pageContent;
     }
 
-    public function setUpRouteNode(RouteNode $node) : void
+    public function setUpRouteNode(RouteNode $node): void
     {
 
         $pageData = $this->fetch(
