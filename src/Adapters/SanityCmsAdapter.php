@@ -254,6 +254,11 @@ class SanityCmsAdapter extends CmsAdapter
                     ],
                     'internalLink' => [
                         'head' => function ($mark) {
+
+                            if (!isset($mark['reference'])) {
+                                return;
+                            }
+
                             $link = cms()->create()->link();
                             $linkedResource = $this->getResource($mark['reference']['_ref']);
 
@@ -288,7 +293,13 @@ class SanityCmsAdapter extends CmsAdapter
                             $link->generate();
                             return $link->renderStartTag();
                         },
-                        'tail' => '</a>'
+                        'tail' => function ($mark) {
+
+                            if (!isset($mark['reference'])) {
+                                return;
+                            }
+                            return '</a>';
+                        }
                     ]
                 ]
             ]
