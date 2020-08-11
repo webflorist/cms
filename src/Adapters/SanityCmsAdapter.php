@@ -95,11 +95,12 @@ class SanityCmsAdapter extends CmsAdapter
 
     public function setUpRouteNode(RouteNode $node): void
     {
+        $nodeId = $node->hasParentNode() ? $node->getId() : 'home';
 
         $pageData = $this->fetch(
             '*[_type=="page" && node==$node]',
             [
-                'node' => $node->getId()
+                'node' => $nodeId
             ]
         )[0];
 
@@ -115,6 +116,10 @@ class SanityCmsAdapter extends CmsAdapter
 
         if (isset($pageData['subtitle'])) {
             $node->payload->subtitle = $pageData['subtitle'];
+        }
+
+        if (isset($pageData['icon'])) {
+            $node->payload->icon = $pageData['icon'];
         }
     }
 
@@ -325,7 +330,7 @@ class SanityCmsAdapter extends CmsAdapter
             $page = $linkedResource;
 
             if ($linkedResource['_type'] !== 'page') {
-                $page = $this->getPageOfContent($mark['reference']['_ref']);
+                $page = $this->getPageOfContent($linkedResource['_id']);
             }
 
             $linkPayload->toRouteNode(
