@@ -161,7 +161,11 @@ class SanityCmsAdapter extends CmsAdapter
 
         if ($resourceData['_type'] === 'menuItem') {
             if (isset($resourceData['content'])) {
-                $resourceData['content'] = self::toHtml($resourceData['content']);
+                $resourceData['content'] = self::toHtml(
+                    $resourceData['content'],
+                    true,
+                    $resourceData['heading']['tag'] ?? 'h3'
+                );
             }
             if (isset($resourceData['reference']['_ref'])) {
                 $resourceData = array_merge($resourceData, $this->getResource($resourceData['reference']['_ref']));
@@ -198,7 +202,7 @@ class SanityCmsAdapter extends CmsAdapter
 
         if (isset($resourceData['text'])) {
             $payload->content(
-                $this->toHtml($resourceData['text'])
+                $this->toHtml($resourceData['text'], true, $payload->heading->tag)
             );
             unset($resourceData['text']);
         }
@@ -215,15 +219,20 @@ class SanityCmsAdapter extends CmsAdapter
         return $this->fetch("*[_id == '$contentId']{page->{...}}")[0]['page'];
     }
 
-    protected function toHtml(array $content, bool $wrapBlock = true): string
+    protected function toHtml(array $content, bool $wrapBlock = true, ?string $parentHeading='h3'): string
     {
+        $parentHeadingLevel = intval(substr($parentHeading, 1));
+        $childHeading = 'h'.($parentHeadingLevel+1);
         return BlockContent::toHtml($content, [
             'projectId' => config('cms.services.sanity.project_id'),
             'dataset' => config('cms.services.sanity.dataset'),
             'serializers' => [
-                'block' => function ($block) use ($wrapBlock) {
+                'block' => function ($block) use ($wrapBlock, $content, $childHeading) {
                     $return = implode('', $block['children']);
                     if ($wrapBlock && (strlen($return) > 0)) {
+                        if ($block['style'] === 'h4') {
+                            $block['style'] = $childHeading;
+                        }
                         $tag = $block['style'] === 'normal' ? 'p' : $block['style'];
                         $return = '<' . $tag . '>' . $return . '</' . $tag . '>';
                     }
