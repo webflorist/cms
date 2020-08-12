@@ -110,6 +110,10 @@ class SanityCmsAdapter extends CmsAdapter
             $node->payload->navTitle = $pageData['navTitle'];
         }
 
+        if (isset($pageData['showSubtitleInHead'])) {
+            $node->payload->showSubtitleInHead = $pageData['showSubtitleInHead'];
+        }
+
         if (isset($pageData['description'])) {
             $node->payload->description = $pageData['description'];
         }
