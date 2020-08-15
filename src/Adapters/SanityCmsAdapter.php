@@ -229,6 +229,7 @@ class SanityCmsAdapter extends CmsAdapter
             'serializers' => [
                 'block' => function ($block) use ($wrapBlock, $content, $childHeading) {
                     $return = implode('', $block['children']);
+                    $return = nl2br($return);
                     if ($wrapBlock && (strlen($return) > 0)) {
                         if ($block['style'] === 'h4') {
                             $block['style'] = $childHeading;
