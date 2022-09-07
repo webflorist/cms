@@ -7,6 +7,7 @@ use Sanity\BlockContent;
 use Sanity\Client;
 use Webflorist\Cms\Adapters\Abstracts\CmsAdapter;
 use Webflorist\Cms\Components\Payload\CmsComponentPayload;
+use Webflorist\Cms\Components\Payload\CmsImagePayload;
 use Webflorist\Cms\Components\Payload\CmsLinkPayload;
 use Webflorist\Cms\Components\Traits\CmsComponent;
 use Webflorist\HtmlFactory\Elements\Abstracts\Element;
@@ -178,6 +179,12 @@ class SanityCmsAdapter extends CmsAdapter
         if (isset($resourceData['heading'])) {
             $payload->heading(new CmsComponentPayload($resourceData['heading']));
             unset($resourceData['heading']);
+        }
+
+        if (isset($resourceData['image'])) {
+            $imageReference = $this->getResource($resourceData['image']['asset']['_ref']);
+            $payload->image((new CmsImagePayload())->src($imageReference['url']));
+            unset($resourceData['image']);
         }
 
         if (isset($resourceData['id'])) {

@@ -24,6 +24,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @property CmsComponentPayload        $heading            Payload to use for heading-sub-component.
  * @property string                     $icon               Icon of component.
  * @property string|CmsLinkPayload      $link               Main Link of component.
+ * @property CmsImagePayload            $image              Main Image of component.
  * @property string[]                   $classes            Html-classes to apply to this component.
  * @property string                     $id                 Html-id to apply to this component.
  * @property string                     $layout             Layout to use for this component.
@@ -39,6 +40,7 @@ use Webflorist\HtmlFactory\Payload\Abstracts\Payload;
  * @method   CmsComponentPayload                      content(string $content)
  * @method   CmsComponentPayload                      isHtmlContent(bool $isHtmlContent)
  * @method   CmsComponentPayload                      heading(CmsComponentPayload $headingPayload)
+ * @method   CmsComponentPayload                      image(CmsImagePayload $imagePayload)
  * @method   CmsComponentPayload                      icon(mixed $title)
  * @method   CmsComponentPayload                      link(CmsLinkPayload $linkPayload)
  * @method   CmsComponentPayload                      classes(string[] $classes)
